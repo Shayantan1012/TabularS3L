@@ -209,7 +209,6 @@ class SubTab(TS3LModule):
         Returns:
             torch.Tensor: The processed subset of the sample.
         """
-        print(subset_column_idx)
         x_bar = x[:, subset_column_idx]
         x_bar_noisy = self.__generate_noisy_xbar(x_bar)
         mask = torch.bernoulli(torch.full(
