@@ -7,7 +7,9 @@ from torch import nn
 @dataclass
 class MLPBackboneConfig(BaseBackboneConfig):
     input_dim: Optional[int] = field(default=None)
-    hidden_dims: Union[int, List[int]] = field(default=128)
+    # //////////////////////
+    hidden_dims: List[int] = field(default_factory=lambda: [128])
+    # //////////////////////
     output_dim: Optional[int] = field(default=None)
     n_hiddens: int = field(default=2)
     activation: str = field(default='ReLU')
