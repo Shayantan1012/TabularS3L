@@ -54,8 +54,8 @@ class SubTabDataset(Dataset):
 
                 class_weights = [num_samples / class_counts[i]
                                  for i in range(len(class_counts))]
-                # /////////////////////////////////////
-                self.weights = [class_weights[int(self.label[i])] for i in range(int(num_samples))]
+                self.weights = [class_weights[(self.label[i])]
+                                for i in range(int(num_samples))]
 
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
         """Retrieves the feature and label tensors for a given index.
