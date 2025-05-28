@@ -51,14 +51,10 @@ class SubTabDataset(Dataset):
                 class_counts = [sum((self.label == i))
                                 for i in set(self.label.numpy())]
                 num_samples = len(self.label)
-                print(f"Class counts: {len(class_counts)}")
-                print(f"num_samples: {len(num_samples)}")
-                print(f"lebel: {len(self.label)}")   
 
                 class_weights = [num_samples / class_counts[i]
                                  for i in range(len(class_counts))]
-                print(f"Class weights: {class_weights}")
-                self.weights = [class_weights[(self.label[i])]
+                self.weights = [class_weights[self.label[i]]
                                 for i in range(int(num_samples))]
 
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
