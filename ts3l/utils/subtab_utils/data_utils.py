@@ -51,6 +51,9 @@ class SubTabDataset(Dataset):
                 class_counts = [sum((self.label == i))
                                 for i in set(self.label.numpy())]
                 num_samples = len(self.label)
+                print(f"Class counts: {class_counts}")
+                print(f"num_samples: {num_samples}")
+                print(f"lebel: {self.label}")   
 
                 class_weights = [num_samples / class_counts[i]
                                  for i in range(len(class_counts))]
